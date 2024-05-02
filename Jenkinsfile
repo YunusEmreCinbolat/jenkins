@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = 'melekgezer-html-server'
-        CONTAINER_NAME = 'melekgezer-container'
+        DOCKER_IMAGE = 'YunusEmreCinbolat-html-server'
+        CONTAINER_NAME = 'YunusEmreCinbolat-container'
         PORT_MAPPING = '4444:80'
     }
 
