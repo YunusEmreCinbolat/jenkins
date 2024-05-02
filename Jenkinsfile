@@ -37,12 +37,3 @@ pipeline {
         }
     }
 }
-        
-        stage('Run Docker Container') {
-            steps {
-                script {
-                    docker.image(env.DOCKER_IMAGE).run("-d --name ${env.CONTAINER_NAME} -p ${env.PORT_MAPPING}")
-                }
-            }
-        }
-    
