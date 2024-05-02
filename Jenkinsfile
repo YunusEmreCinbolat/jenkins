@@ -2,10 +2,11 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = 'YunusEmreCinbolat-html-server'
-        CONTAINER_NAME = 'YunusEmreCinbolat-container'
-        PORT_MAPPING = '80:4444'
+        DOCKER_IMAGE = 'melekgezer-html-server'
+        CONTAINER_NAME = 'melekgezer-container'
+        PORT_MAPPING = '4444:80'
     }
+
     stages {
 
         stage('Cleanup') {
@@ -13,6 +14,7 @@ pipeline {
                 script {
                     bat "docker stop ${env.CONTAINER_NAME} || exit 0"
                     bat "docker rm ${env.CONTAINER_NAME} || exit 0"
+
                     bat "docker rmi ${env.DOCKER_IMAGE} || exit 0"
                 }
             }
@@ -25,6 +27,16 @@ pipeline {
                 }
             }
         }
+
+        stage('Run Docker Container') {
+            steps {
+                script {
+                    docker.image(env.DOCKER_IMAGE).run("-d --name ${env.CONTAINER_NAME} -p ${env.PORT_MAPPING}")
+                }
+            }
+        }
+    }
+}
         
         stage('Run Docker Container') {
             steps {
