@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = 'YunusEmreCinbolat-html-server'
-        CONTAINER_NAME = 'YunusEmreCinbolat-container'
+        DOCKER_IMAGE = 'yunusemrecinbolat-html-server'
+        CONTAINER_NAME = 'yunusemrecinbolat-container'
         PORT_MAPPING = '4444:80'
     }
 
@@ -37,3 +37,4 @@ pipeline {
         }
     }
 }
+    
