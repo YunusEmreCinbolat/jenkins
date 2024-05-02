@@ -13,13 +13,11 @@ pipeline {
                 script {
                     bat "docker stop ${env.CONTAINER_NAME} || exit 0"
                     bat "docker rm ${env.CONTAINER_NAME} || exit 0"
-
                     bat "docker rmi ${env.DOCKER_IMAGE} || exit 0"
                 }
-            }
-        }
-
-    stages {
+            }
+        }
+        
         stage('Build Docker Image') {
             steps {
                 script {
